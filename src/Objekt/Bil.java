@@ -2,7 +2,6 @@ package Objekt;
 /*
 klasse for å definere en bil
  */
-// Test1
 public class Bil {
     private String regNr;
     private String bilMerke;
@@ -72,7 +71,7 @@ public class Bil {
         this.utleiegruppe = utleiegruppe;
     }
 
-    public Boolean getLeidig() {
+    public Boolean getLedig() {
         return ledig;
     }
 
