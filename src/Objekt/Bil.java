@@ -1,8 +1,12 @@
 package Objekt;
+
+import java.time.temporal.ChronoUnit;
+
 /*
 klasse for å definere en bil
  */
 public class Bil {
+	private int pris;
     private String regNr;
     private String bilMerke;
     private String modell;
@@ -10,10 +14,13 @@ public class Bil {
     private UtleieGruppeEnum utleiegruppe;
     private boolean ledig;
     private int kmStand;
+    
+   
+    
 	
 
     public Bil(String regNr, String bilMerke, String modell, int kmStand, String farge, UtleieGruppeEnum utleiegruppe) {
-        this.regNr = regNr;
+    	this.regNr = regNr;
         this.bilMerke = bilMerke;
         this.modell = modell;
         this.farge = farge;
@@ -89,7 +96,9 @@ public class Bil {
     	}
     } 
     
+    
  
+    
     
 
     @Override

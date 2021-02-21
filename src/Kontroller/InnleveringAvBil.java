@@ -43,11 +43,14 @@ public class InnleveringAvBil {
         }
 
         //kmstand på bilen ved innlevering
-        System.out.println("Hvor mange km viser km-telleren på bilen? ");
+        Bil bil = res.getBil();
+        System.out.println("Hvor mange km viser km-telleren på bilen? \n"
+        				 + "Ved utlevering var KM stand: " + bil.getKmStand());
+        				   
         int kmStand = sc.nextInt();
 
         //Setter ny kmStand på bil og setter bil som ledig
-        Bil bil = res.getBil();
+       
         bil.setKmStand(kmStand);
         bil.setLedig(true);
 
@@ -55,7 +58,8 @@ public class InnleveringAvBil {
         Kontor returKontor = res.getReturSted();
         returKontor.leggTilBil(bil);
 
-        System.out.println("Regningen er nå sendt");
+        System.out.println("Din regning er: " + res.prisForLeie() + "\n" 
+        				   + "Takk for at du benyttet deg av KardiCar utleie.");
         Kredittkort kort = res.getKunde().getKredittKort();
 
         alleReservasjoner.remove(res);
