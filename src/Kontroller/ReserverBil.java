@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -24,17 +25,16 @@ public class ReserverBil {
         Scanner sc = new Scanner(System.in);
         DateTimeFormatter dtf = DateTimeFormatter.BASIC_ISO_DATE;
         
-    
         List <Kontor> tilgjengeligeKontor = selskap.getKontorer();
-        for (Kontor i : tilgjengeligeKontor) {
-        	System.out.println(i.toString());
-        }
-        
-        System.out.println("Skriv inn utleiekontor: ");
+        String list = tilgjengeligeKontor.toString();
+        System.out.println(list);
+      
+       
+        System.out.println("Skriv inn ditt ønskede utleiekontor: ");
         String utleiekontor = sc.nextLine();
-        
-        System.out.println(tilgjengeligeKontor);
-        System.out.println("Skriv inn ønsker returkontor: ");
+       
+        System.out.println(list);
+        System.out.println("Skriv inn ditt ønskede returkontor: ");
         String returkontor = sc.nextLine();
 
         System.out.println("Skriv inn dato du ønsker å leie ifra. (dd/MM/yyyy)");
@@ -52,7 +52,6 @@ public class ReserverBil {
         int dager = sc.nextInt();
 
         List <Kontor> alleKontorer = selskap.getKontorer();
-        System.out.println(alleKontorer);
 
         Kontor utleieplass = alleKontorer.stream()
                 .filter(k -> utleiekontor.equals(k.getNavn()))
@@ -119,12 +118,6 @@ public class ReserverBil {
         selskap.leggTilReservasjon(reservasjon);
 
         Klient.valgMeny();
-
+        
     }
-    
-    public String toString()
-    {
-          return getClass().getName()+"@"+Integer.toHexString(hashCode());
-    }
-
 }

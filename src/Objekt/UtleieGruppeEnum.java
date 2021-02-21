@@ -6,4 +6,6 @@ public enum UtleieGruppeEnum {
     MELLOMSTOR_BIL,
     STOR_BIL,
     STASJONSVOGN;
+	
 }
+

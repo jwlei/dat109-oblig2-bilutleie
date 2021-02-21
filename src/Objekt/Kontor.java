@@ -32,7 +32,7 @@ public class Kontor {
         return navn;
     }
 
-    public void SetNavn(String navn) {
+    public void setNavn(String navn) {
         this.navn = navn;
     }
 
@@ -82,5 +82,9 @@ public class Kontor {
     public List<Bil> getBiler() {
         return biler;
     }
-
+    @Override
+    public String toString() {
+    	return this.navn;
+    }
+    
 }

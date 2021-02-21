@@ -86,5 +86,5 @@ public class Selskap {
     public List<Retur> getReturnerteBiler() {
         return returnerteBiler;
     }
-
+    
 }

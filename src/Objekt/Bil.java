@@ -10,19 +10,29 @@ public class Bil {
     private UtleieGruppeEnum utleiegruppe;
     private boolean ledig;
     private int kmStand;
+	
 
-    public Bil(String regNr, String bilMerke, String modell, String farge, UtleieGruppeEnum utleiegruppe) {
+    public Bil(String regNr, String bilMerke, String modell, int kmStand, String farge, UtleieGruppeEnum utleiegruppe) {
         this.regNr = regNr;
         this.bilMerke = bilMerke;
         this.modell = modell;
         this.farge = farge;
         this.utleiegruppe = utleiegruppe;
         this.ledig = true;
+        this.kmStand = kmStand;
 
         // for å teste slik at vi slipper å gjøre mange endringer før det virker
-        this.kmStand = 0;
+        
+    }
+    
+    public int getKmStand() {
+        return kmStand;
     }
 
+    public void setKmStand(int kmStand) {
+        this.kmStand = kmStand;
+    }
+    
     public String getRegNr() {
         return regNr;
     }
@@ -37,14 +47,6 @@ public class Bil {
 
     public void setBilMerke(String bilMerke) {
         this.bilMerke = bilMerke;
-    }
-
-    public int getKmStand() {
-        return kmStand;
-    }
-
-    public void setKmStand(int kmStand) {
-        this.kmStand = kmStand;
     }
 
     public String getmodell(String modell) {
@@ -78,11 +80,22 @@ public class Bil {
     public void setLedig(Boolean ledig) {
         this.ledig = ledig;
     }
+    
+    public String erLedig() {
+    	if(ledig) {
+    		return "Ledig";
+    	} else {
+    		return "Opptatt";
+    	}
+    } 
+    
+ 
+    
 
     @Override
     public String toString() {
-        return "Bil [regNr = " + regNr + ", bilMerke = " + bilMerke + ", modell = " + modell + ", farge = " + farge +
-                ", utleiegruppe = " + utleiegruppe + ", ledig = " + ledig + "]";
+        return "Registreringsnummer: " + regNr + ", Merke: " + bilMerke + ", Modell: " + modell + ", KMStand: " + kmStand +  ", Farge: " + farge +
+                ", utleiegruppe: " + utleiegruppe + ", Tilgjengelighet: " + erLedig();
     }
 
 
