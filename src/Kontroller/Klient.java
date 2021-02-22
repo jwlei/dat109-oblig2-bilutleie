@@ -50,8 +50,9 @@ public class Klient {
                 System.out.println("\nProgrammet er avsluttet.");
             default:
                 System.out.println("Noe gikk galt.");
+                Klient.valgMeny();
         }
-
+        
     }
 
 }

@@ -19,13 +19,13 @@ Klasse som definerer innlevering av bil
 public class InnleveringAvBil {
 
     /*
-    metode for å levere inn en bil
+    Metode for innlevering av bil.
     * @param Bil
      */
 
     public static void LeverInn(Selskap selskap) {
         //dato for innlevering
-        LocalDate currDate = LocalDate.now();
+        LocalDate dagsDato = LocalDate.now();
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Skriv inn telefonnummer: ");
@@ -45,7 +45,7 @@ public class InnleveringAvBil {
         //kmstand på bilen ved innlevering
         Bil bil = res.getBil();
         System.out.println("Hvor mange km viser km-telleren på bilen? \n"
-        				 + "Ved utlevering var KM stand: " + bil.getKmStand());
+        				 + "Ved utlevering var KM stand: " + bil.getKmStand()+ ".");
         				   
         int kmStand = sc.nextInt();
 
@@ -59,11 +59,11 @@ public class InnleveringAvBil {
         
         if(res.getReturSted() != res.getUtleiested()) {
         	int totalpris = res.prisForLeie()+res.getGebyr();
-        	 System.out.println("Din regning er: " + totalpris + "\n" 
-        		   + "Hvor 29 kroner er gebyr for annet leveringskontor.\n"
+        	 System.out.println("Din regning er: " + totalpris + ",-\n" 
+        		   + "Hvor 29,- kroner er gebyr for annet leveringskontor.\n"
   				   + "Takk for at du benyttet deg av KardiCar utleie.");
         } else {
-        	System.out.println("Din regning er: " + res.prisForLeie() + "\n" 
+        	System.out.println("Din regning er: " + res.prisForLeie() + ",-\n" 
    				   + "Takk for at du benyttet deg av KardiCar utleie.");
         }
         returKontor.leggTilBil(bil);
@@ -71,13 +71,13 @@ public class InnleveringAvBil {
 
         alleReservasjoner.remove(res);
 
-        Retur retur = new Retur(kort, currDate, bil.getRegNr(), kmStand);
+        Retur retur = new Retur(kort, dagsDato, bil.getRegNr(), kmStand);
         List<Retur> returListe = selskap.getReturnerteBiler();
         returListe.add(retur);
 
         Klient.valgMeny();
 
-        System.out.println("Bilen er innlevert");
+        System.out.println("Bilen er innlevert.");
         System.out.println();
         Klient.valgMeny();
     }

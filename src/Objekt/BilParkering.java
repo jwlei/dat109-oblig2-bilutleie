@@ -9,6 +9,7 @@ public class BilParkering {
 
         List<Bil> biler = new ArrayList<Bil>();
         
+        // REG MERKE MODEL KM FARGE KLASSE LEDIG 
         Bil b1 = new Bil("SU12345", "Opel", "Corsa", 10000, "Rød", UtleieGruppeEnum.LITEN_BIL, true);
         biler.add(b1);
         Bil b2 = new Bil("SU8245", "Audi", "A3",  951000, "Sølv",  UtleieGruppeEnum.MELLOMSTOR_BIL, true);
@@ -18,7 +19,6 @@ public class BilParkering {
         Bil b4 = new Bil("SV54321", "Volkswagen", "Passat", 231451, "Svart", UtleieGruppeEnum.STASJONSVOGN, true);
         biler.add(b4);
 
-        
         return biler;
     }
 

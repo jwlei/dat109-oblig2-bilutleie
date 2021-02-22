@@ -25,7 +25,7 @@ public class UtleieBil {
     public static void leiUt(Selskap selskap) {
         Scanner sc = new Scanner(System.in);
 
-        LocalDate currDate = LocalDate.now();
+        LocalDate dagsDato = LocalDate.now();
 
         System.out.println("Skriv inn telefon nummer: ");
         int telefonNummer = sc.nextInt();
@@ -64,10 +64,12 @@ public class UtleieBil {
         String regNr = res.getBil().getRegNr();
         int kmStand = res.getBil().getKmStand();
 
-        Utlevering utlevering = new Utlevering(kunde.getKredittKort(), regNr, kmStand, currDate, res.getStartDato().plusDays(res.getAntallDager()));
+        Utlevering utlevering = new Utlevering(kunde.getKredittKort(), regNr, kmStand, dagsDato, res.getStartDato().plusDays(res.getAntallDager()));
         selskap.leggTilUtlevertBil(utlevering);
-        System.out.println();
-        System.out.println("Kjør forsiktig!");
+       
+        
+        System.out.println("Kjør forsiktig!\n");
+        
         Klient.valgMeny();
 
         Klient.valgMeny();

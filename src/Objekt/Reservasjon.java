@@ -6,8 +6,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.*;
 
+import Kontroller.Klient;
+
 /*
-klasse for å definere reservasjon
+Klasse som definerer reservasjon
  */
 
 public class Reservasjon {
@@ -38,31 +40,35 @@ public class Reservasjon {
         this.utleieSted = utleiested;
         this.returSted = returSted;
         this.kunde = kunde;
-        this.gebyr = gebyr;
+        
 
         reserver(bil);
     }
 
    
     /*
-    metode for å sett en bil som reservert
+    Setter bil som opptatt.
+    @return - boolean
      */
 
     public void reserver(Bil bil) {
-        LocalDate currDate = LocalDate.now();
+       
+        LocalDate dagsDato = LocalDate.now();
         LocalDate sluttDato = startDato.plusDays(antallDager);
 
-        while (currDate.isAfter(startDato) && currDate.isBefore(sluttDato)) {
+        if (dagsDato.isBefore(sluttDato)) {
             bil.setLedig(false);
         }
     }
+    
+    /* 
+     *  Get og setters for Reservasjon
+     *  */
+    
     public int getGebyr() {
     	return gebyr;
     }
     
-    public void setGebyr() {
-    	this.gebyr = gebyr;
-    }
     public Bil getBil() {
         return bil;
     }
@@ -94,8 +100,9 @@ public class Reservasjon {
     public void setPris() {
     	this.pris = pris;
     }
+    
     /**
-	 * Finner leiepris for en bil.
+	 * Regner ut leiepris for bil.
 	 * @return - pris
 	 */
     
@@ -117,7 +124,5 @@ public class Reservasjon {
  		  pris = (int) dager * prisStasjonsvogn;
  		  return pris;
  		}
- 	 
- 	  }
-	
+    }
 }

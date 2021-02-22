@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 import Objekt.Adresse;
 import Objekt.Bil;
 import Objekt.Kontor;
+import Objekt.Kredittkort;
 import Objekt.Kunde;
 import Objekt.Reservasjon;
 import Objekt.Selskap;
@@ -27,9 +28,9 @@ public class ReserverBil {
         
         List <Kontor> tilgjengeligeKontor = selskap.getKontorer();
         String list = tilgjengeligeKontor.toString();
-        System.out.println(list);
-      
        
+      
+        System.out.println(list);
         System.out.println("Skriv inn ditt ønskede utleiekontor: ");
         String utleiekontor = sc.nextLine();
        
@@ -37,16 +38,19 @@ public class ReserverBil {
         System.out.println("Skriv inn ditt ønskede returkontor: ");
         String returkontor = sc.nextLine();
 
+        
         System.out.println("Skriv inn dato du ønsker å leie ifra. (dd/MM/yyyy)");
         String stringdato = sc.nextLine();
 
         dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate dato = LocalDate.parse(stringdato, dtf);
+        LocalDate dato = LocalDate.parse(stringdato, dtf);   
+        
 
         System.out.println("Skriv inn ønsket klokkeslett for utleie. (HH:mm)");
         String klokke = sc.nextLine();
         dtf = DateTimeFormatter.ofPattern("hh:mm");
-        LocalTime tidspunkt = LocalTime.parse(klokke);
+        LocalTime startTid = LocalTime.parse(klokke);
+        
 
         System.out.println("Anngi antall dager du vil leie bilen: ");
         int dager = sc.nextInt();
@@ -114,10 +118,10 @@ public class ReserverBil {
 
 
         Kunde k1 = new Kunde(fnavn, enavn, tlf, new Adresse(gateadresse, postnr, poststed));
-        Reservasjon reservasjon = new Reservasjon(bil, dato, tidspunkt, dager, utleieplass, returplass, k1);
+        Reservasjon reservasjon = new Reservasjon(bil, dato, startTid, dager, utleieplass, returplass, k1);
         selskap.leggTilReservasjon(reservasjon);
 
         Klient.valgMeny();
-        
+        Klient.valgMeny();
     }
 }

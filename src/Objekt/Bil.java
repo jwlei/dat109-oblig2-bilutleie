@@ -1,7 +1,5 @@
 package Objekt;
 
-import java.time.temporal.ChronoUnit;
-
 /*
 klasse for å definere en bil
  */
@@ -27,7 +25,6 @@ public class Bil {
         this.ledig = ledig;
         this.kmStand = kmStand;
 
-        // for å teste slik at vi slipper å gjøre mange endringer før det virker
         
     }
     
