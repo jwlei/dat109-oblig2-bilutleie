@@ -67,7 +67,7 @@ public class UtleieBil {
         Utlevering utlevering = new Utlevering(kunde.getKredittKort(), regNr, kmStand, currDate, res.getStartDato().plusDays(res.getAntallDager()));
         selskap.leggTilUtlevertBil(utlevering);
         System.out.println();
-        System.out.println("Her er bilen din");
+        System.out.println("Kjør forsiktig!");
         Klient.valgMeny();
 
         Klient.valgMeny();

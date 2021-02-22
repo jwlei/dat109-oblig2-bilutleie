@@ -21,6 +21,7 @@ public class Reservasjon {
     private Kontor returSted;
     private Kunde kunde;
     private int pris;
+    private int gebyr = 29;
     
     private static final int prisLitenBil = 100;
    	private static final int prisMellomStorBil = 200;
@@ -37,6 +38,7 @@ public class Reservasjon {
         this.utleieSted = utleiested;
         this.returSted = returSted;
         this.kunde = kunde;
+        this.gebyr = gebyr;
 
         reserver(bil);
     }
@@ -54,7 +56,13 @@ public class Reservasjon {
             bil.setLedig(false);
         }
     }
-
+    public int getGebyr() {
+    	return gebyr;
+    }
+    
+    public void setGebyr() {
+    	this.gebyr = gebyr;
+    }
     public Bil getBil() {
         return bil;
     }

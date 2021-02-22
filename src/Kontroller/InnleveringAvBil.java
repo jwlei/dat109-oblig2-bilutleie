@@ -56,10 +56,17 @@ public class InnleveringAvBil {
 
         //Henter returkontor og legger til bil i deres billiste
         Kontor returKontor = res.getReturSted();
+        
+        if(res.getReturSted() != res.getUtleiested()) {
+        	int totalpris = res.prisForLeie()+res.getGebyr();
+        	 System.out.println("Din regning er: " + totalpris + "\n" 
+        		   + "Hvor 29 kroner er gebyr for annet leveringskontor.\n"
+  				   + "Takk for at du benyttet deg av KardiCar utleie.");
+        } else {
+        	System.out.println("Din regning er: " + res.prisForLeie() + "\n" 
+   				   + "Takk for at du benyttet deg av KardiCar utleie.");
+        }
         returKontor.leggTilBil(bil);
-
-        System.out.println("Din regning er: " + res.prisForLeie() + "\n" 
-        				   + "Takk for at du benyttet deg av KardiCar utleie.");
         Kredittkort kort = res.getKunde().getKredittKort();
 
         alleReservasjoner.remove(res);

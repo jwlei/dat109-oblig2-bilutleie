@@ -6,7 +6,6 @@ import java.time.temporal.ChronoUnit;
 klasse for å definere en bil
  */
 public class Bil {
-	private int pris;
     private String regNr;
     private String bilMerke;
     private String modell;
@@ -19,13 +18,13 @@ public class Bil {
     
 	
 
-    public Bil(String regNr, String bilMerke, String modell, int kmStand, String farge, UtleieGruppeEnum utleiegruppe) {
+    public Bil(String regNr, String bilMerke, String modell, int kmStand, String farge, UtleieGruppeEnum utleiegruppe, boolean ledig) {
     	this.regNr = regNr;
         this.bilMerke = bilMerke;
         this.modell = modell;
         this.farge = farge;
         this.utleiegruppe = utleiegruppe;
-        this.ledig = true;
+        this.ledig = ledig;
         this.kmStand = kmStand;
 
         // for å teste slik at vi slipper å gjøre mange endringer før det virker
@@ -89,7 +88,7 @@ public class Bil {
     }
     
     public String erLedig() {
-    	if(ledig) {
+    	if(getLedig()) {
     		return "Ledig";
     	} else {
     		return "Opptatt";
@@ -103,7 +102,7 @@ public class Bil {
 
     @Override
     public String toString() {
-        return "Registreringsnummer: " + regNr + ", Merke: " + bilMerke + ", Modell: " + modell + ", KMStand: " + kmStand +  ", Farge: " + farge +
+        return  "Registreringsnummer: " + regNr + ", Merke: " + bilMerke + ", Modell: " + modell + ", KMStand: " + kmStand +  ", Farge: " + farge +
                 ", utleiegruppe: " + utleiegruppe + ", Tilgjengelighet: " + erLedig();
     }
 
