@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
-klasse for å definere selskap
- */
+ * Klasse for å definere selskap
+ * @param navn
+ * @param firmaAdr
+ * @param tlfNr
+ *   */
 
 public class Selskap {
     private String navn;
@@ -55,11 +58,9 @@ public class Selskap {
         return this.reservasjoner;
     }
 
-    /*
-    metode for å legge til en reservasjon
-     */
+  
 
-
+    /* Legg til reservasjon */
     public void leggTilReservasjon(Reservasjon res) {
         reservasjoner.add(res);
     }

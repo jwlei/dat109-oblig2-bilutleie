@@ -1,7 +1,14 @@
 package Objekt;
-/*
-klasse for å definere kunde
- */
+
+/* 
+ * Klasse og metode for kunde
+ * @param fornavn
+ * @param etternavn
+ * @param tlfNr
+ * @param adresse
+ * @param kredittkort
+ *  */
+
 public class Kunde {
 
     private String fornavn;

@@ -4,8 +4,6 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
-
-import Objekt.Bil;
 import Objekt.Kredittkort;
 import Objekt.Kunde;
 import Objekt.Reservasjon;
@@ -13,20 +11,15 @@ import Objekt.Selskap;
 import Objekt.Utlevering;
 
 
-/*
-Klasse som definerer utleie av bil
- */
+/* 
+ * Klasse for prosess og interface ved utleie av bil */
 
 public class UtleieBil {
-    /*
-    Metode for å leie ut bil
-     */
-
     public static void leiUt(Selskap selskap) {
         Scanner sc = new Scanner(System.in);
-
         LocalDate dagsDato = LocalDate.now();
-
+        
+        //Telefon
         System.out.println("Skriv inn telefon nummer: ");
         int telefonNummer = sc.nextInt();
 
@@ -42,9 +35,9 @@ public class UtleieBil {
             sc.close();
             return;
         }
-
         Kunde kunde = res.getKunde();
-
+        
+        //Kredittkort
         System.out.println("Skriv inn kredittkort nummer (5 siffer): ");
         long kortNummer = sc.nextLong();
 
@@ -57,7 +50,6 @@ public class UtleieBil {
 
             kort.setKortNummer(nyttKortNummer);
             gyldigKort = kort.validerKort();
-
         }
 
         kunde.setKredittKort(kort);
@@ -67,11 +59,10 @@ public class UtleieBil {
         Utlevering utlevering = new Utlevering(kunde.getKredittKort(), regNr, kmStand, dagsDato, res.getStartDato().plusDays(res.getAntallDager()));
         selskap.leggTilUtlevertBil(utlevering);
        
-        
+        //Utleie gjennomført og kunde får bil.
         System.out.println("Kjør forsiktig!\n");
         
         Klient.valgMeny();
-
         Klient.valgMeny();
 
     }

@@ -1,5 +1,10 @@
 package Objekt;
 
+/* 
+ * Klasse for kredittkort
+ * @param kortNummer
+ *  */
+
 public class Kredittkort {
     private long kortNummer;
 
@@ -16,13 +21,17 @@ public class Kredittkort {
 
     }
 
+    /* 
+     * Metode for å validere korrekt kortnummer.
+     * @return boolean
+     *  */
     public boolean validerKort() {
-        boolean ok = false;
+        boolean erLovlig = false;
 
         if (String.valueOf(kortNummer).length() == 5) {
-            ok = true;
+            erLovlig = true;
         }
 
-        return ok;
+        return erLovlig;
     }
 }

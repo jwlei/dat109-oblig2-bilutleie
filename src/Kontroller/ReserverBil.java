@@ -1,11 +1,8 @@
 package Kontroller;
 
-import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -13,12 +10,13 @@ import java.util.stream.Collectors;
 import Objekt.Adresse;
 import Objekt.Bil;
 import Objekt.Kontor;
-import Objekt.Kredittkort;
 import Objekt.Kunde;
 import Objekt.Reservasjon;
 import Objekt.Selskap;
 
-
+/* 
+ * Klasse og metode for å gjennomføre reservasjon av bil.
+ *  */
 public class ReserverBil {
 
     public static void reserverBil(Selskap selskap) {
@@ -29,34 +27,35 @@ public class ReserverBil {
         List <Kontor> tilgjengeligeKontor = selskap.getKontorer();
         String list = tilgjengeligeKontor.toString();
        
-      
+        //Velger utleiekontor
         System.out.println(list);
         System.out.println("Skriv inn ditt ønskede utleiekontor: ");
         String utleiekontor = sc.nextLine();
        
+        //Velger returkontor
         System.out.println(list);
         System.out.println("Skriv inn ditt ønskede returkontor: ");
         String returkontor = sc.nextLine();
 
-        
+        //Velger startDato
         System.out.println("Skriv inn dato du ønsker å leie ifra. (dd/MM/yyyy)");
         String stringdato = sc.nextLine();
 
         dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate dato = LocalDate.parse(stringdato, dtf);   
         
-
-        System.out.println("Skriv inn ønsket klokkeslett for utleie. (HH:mm)");
+        //Velger start klokkeslett
+        System.out.println("Skriv klokkeslett du ønsker å leie bilen fra: (HH:mm)");
         String klokke = sc.nextLine();
         dtf = DateTimeFormatter.ofPattern("hh:mm");
         LocalTime startTid = LocalTime.parse(klokke);
         
-
+        //Velger antall dager for leieperiode.
         System.out.println("Anngi antall dager du vil leie bilen: ");
         int dager = sc.nextInt();
-
+        
+        //Finner tilgjengelige biler for valgt kontor
         List <Kontor> alleKontorer = selskap.getKontorer();
-
         Kontor utleieplass = alleKontorer.stream()
                 .filter(k -> utleiekontor.equals(k.getNavn()))
                 .findAny()
@@ -67,6 +66,7 @@ public class ReserverBil {
                 .findAny()
                 .orElse(null);
 
+        
         System.out.println(utleieplass.getNavn());
         List<Bil> alleBiler = utleieplass.getBiler();
 
@@ -74,9 +74,11 @@ public class ReserverBil {
                 .filter(b -> b.getLedig() == true)
                 .collect(Collectors.toList());
 
+        
         System.out.println("Tilgjengelige biler: ");
         tilgjBiler.stream().forEach(System.out :: println);
 
+        //Velger ønsket bil fra liste over tilgjengelige biler.
         System.out.println("Skriv inn registreringsnummer for ønsket bil: ");
         sc.nextLine();
         String regNr = sc.nextLine();
@@ -92,7 +94,7 @@ public class ReserverBil {
             return;
 
         }
-
+        //Registrering av personalia til reservasjon.
         System.out.println("Skriv inn ditt fornavn: ");
         String fnavn = sc.nextLine();
 
@@ -117,8 +119,11 @@ public class ReserverBil {
         System.out.println();
 
 
-        Kunde k1 = new Kunde(fnavn, enavn, tlf, new Adresse(gateadresse, postnr, poststed));
-        Reservasjon reservasjon = new Reservasjon(bil, dato, startTid, dager, utleieplass, returplass, k1);
+        /* 
+         * Legger inn data fra scanner inn i en ny reservasjon.
+         *  */
+        Kunde nyKunde = new Kunde(fnavn, enavn, tlf, new Adresse(gateadresse, postnr, poststed));
+        Reservasjon reservasjon = new Reservasjon(bil, dato, startTid, dager, utleieplass, returplass, nyKunde);
         selskap.leggTilReservasjon(reservasjon);
 
         Klient.valgMeny();

@@ -7,6 +7,10 @@ import Objekt.BilParkering;
 import Objekt.Kontor;
 import Objekt.Selskap;
 
+/* 
+ * Main klassen for klient hvor vi starter interfacet.
+ *  */
+
 public class Klient {
 
     private static Selskap KardiCar = new Selskap("KardiCar", new Adresse("Kardemommeveien 1", 1337, "Kardemommeby"), "94959697");
@@ -23,7 +27,7 @@ public class Klient {
         valgMeny();
 
     }
-
+    //Hovedmeny for interface.
     public static void valgMeny() {
         Scanner sc = new Scanner(System.in);
 

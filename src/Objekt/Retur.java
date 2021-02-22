@@ -2,6 +2,14 @@ package Objekt;
 
 import java.time.LocalDate;
 
+/* 
+ * Metode som setter verdi for retur av bil.
+ * @param Kredittkort
+ * @param returDato
+ * @param regnr
+ * @param kmStand
+ *  */
+
 public class Retur {
 
     private Kredittkort kredittkort;

@@ -1,8 +1,15 @@
 package Objekt;
 
-/*
-klasse for å definere en bil
- */
+/* 
+ * Klasse for definering av bil
+ * @param regNr
+ * @param bilMerke
+ * @param modell
+ * @param farge
+ * @param utleiegruppe
+ * @param ledig
+ * @param kmStand
+ *  */
 public class Bil {
     private String regNr;
     private String bilMerke;
@@ -12,10 +19,7 @@ public class Bil {
     private boolean ledig;
     private int kmStand;
     
-   
     
-	
-
     public Bil(String regNr, String bilMerke, String modell, int kmStand, String farge, UtleieGruppeEnum utleiegruppe, boolean ledig) {
     	this.regNr = regNr;
         this.bilMerke = bilMerke;
@@ -24,9 +28,8 @@ public class Bil {
         this.utleiegruppe = utleiegruppe;
         this.ledig = ledig;
         this.kmStand = kmStand;
-
-        
     }
+    
     
     public int getKmStand() {
         return kmStand;
@@ -84,6 +87,11 @@ public class Bil {
         this.ledig = ledig;
     }
     
+    
+    /* 
+     * @param getLedig
+     * return boolean
+     *  */
     public String erLedig() {
     	if(getLedig()) {
     		return "Ledig";
@@ -91,10 +99,6 @@ public class Bil {
     		return "Opptatt";
     	}
     } 
-    
-    
- 
-    
     
 
     @Override

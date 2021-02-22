@@ -1,6 +1,10 @@
 package Objekt;
-/*
-    klasse for adresse
+
+/* 
+ * Klasse som definerer adresse
+ * @param gateAdresse
+ * @param postNr
+ * @paramPoststed
  */
 public class Adresse {
 

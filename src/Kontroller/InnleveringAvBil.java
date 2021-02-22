@@ -12,9 +12,9 @@ import Objekt.Selskap;
 import Objekt.Kredittkort;
 import Objekt.Reservasjon;
 
-/*
-Klasse som definerer innlevering av bil
- */
+/* 
+ * Klasse som definerer innlevering av lånt bil.
+ *  */
 
 public class InnleveringAvBil {
 
@@ -24,10 +24,12 @@ public class InnleveringAvBil {
      */
 
     public static void LeverInn(Selskap selskap) {
-        //dato for innlevering
+        //Dato for innlevering
         LocalDate dagsDato = LocalDate.now();
+        
         Scanner sc = new Scanner(System.in);
-
+        
+        //Bruker finner sin reservasjon fra telefonnummer.
         System.out.println("Skriv inn telefonnummer: ");
         int telefonnummer = sc.nextInt();
 
@@ -42,7 +44,7 @@ public class InnleveringAvBil {
             return;
         }
 
-        //kmstand på bilen ved innlevering
+        //Bruker registrerer ny KMstand.
         Bil bil = res.getBil();
         System.out.println("Hvor mange km viser km-telleren på bilen? \n"
         				 + "Ved utlevering var KM stand: " + bil.getKmStand()+ ".");
@@ -50,13 +52,12 @@ public class InnleveringAvBil {
         int kmStand = sc.nextInt();
 
         //Setter ny kmStand på bil og setter bil som ledig
-       
         bil.setKmStand(kmStand);
         bil.setLedig(true);
 
-        //Henter returkontor og legger til bil i deres billiste
         Kontor returKontor = res.getReturSted();
         
+        //Gir brukeren pris for deres leie av bil.
         if(res.getReturSted() != res.getUtleiested()) {
         	int totalpris = res.prisForLeie()+res.getGebyr();
         	 System.out.println("Din regning er: " + totalpris + ",-\n" 
@@ -66,9 +67,11 @@ public class InnleveringAvBil {
         	System.out.println("Din regning er: " + res.prisForLeie() + ",-\n" 
    				   + "Takk for at du benyttet deg av KardiCar utleie.");
         }
+        //Henter returkontor og legger til bil i deres bilparkering.
         returKontor.leggTilBil(bil);
         Kredittkort kort = res.getKunde().getKredittKort();
-
+        
+        //Fjerner reservasjon fra bruker.
         alleReservasjoner.remove(res);
 
         Retur retur = new Retur(kort, dagsDato, bil.getRegNr(), kmStand);

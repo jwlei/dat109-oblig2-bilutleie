@@ -7,9 +7,13 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 
-/**
- *  klasse for å definere kontor
- */
+/*
+ * Klasse for å definere kontor
+ * @param navn
+ * @param adresse
+ * @param selskap
+ * @param biler 
+*/
 public class Kontor {
 
     private static final AtomicInteger count = new AtomicInteger(0);
@@ -28,7 +32,8 @@ public class Kontor {
         this.biler = new ArrayList<Bil>();
     }
 
-    public String getNavn() {
+
+	public String getNavn() {
         return navn;
     }
 
@@ -44,21 +49,30 @@ public class Kontor {
         return adresse;
     }
 
-    /*
-    metode for å lage en reservasjon
-     */
+    
+    
 
-
+    /* 
+     * Metode for å lage en reservasjon
+     * @param bil
+     * @param startDato
+     * @param startTid
+     * @param antDager
+     * @param utleieKontor
+     * @param returKontor
+     * @param kunde
+     * @return res */
     public Reservasjon lagreservasjon(Bil bil, LocalDate startDato, LocalTime startTid, int antDager, Kontor utleieKontor, Kontor returKontor, Kunde kunde) {
         Reservasjon res = new Reservasjon(bil, startDato, startTid, antDager, utleieKontor, returKontor, kunde);
 
         return res;
     }
 
-    /**
-     * Metode for å lagre en reservasjon
-     */
+   
 
+    /* 
+     * Legger til reservasjon for selskap
+     *  */
     public void lagreReservasjon(Reservasjon res) {
         selskap.leggTilReservasjon(res);
     }
@@ -82,6 +96,7 @@ public class Kontor {
     public List<Bil> getBiler() {
         return biler;
     }
+    
     @Override
     public String toString() {
     	return this.navn;

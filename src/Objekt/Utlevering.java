@@ -2,6 +2,16 @@ package Objekt;
 
 import java.time.LocalDate;
 
+/* 
+ * Klasse og metode registrering av utlevering av bil
+ * @param kredittkort
+ * @param regNr
+ * @param kmStand
+ * @param utleieDato
+ * @param returDato
+ * @return kredittkort
+ *  */
+
 public class Utlevering {
 
     private Kredittkort kredittkort;

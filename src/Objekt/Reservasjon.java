@@ -8,9 +8,15 @@ import java.time.temporal.*;
 
 import Kontroller.Klient;
 
-/*
-Klasse som definerer reservasjon
- */
+/* 
+ * Klasse og metode for å registrere en reservasjon
+ * @param bil
+ * @param startDato
+ * @param sluttDato
+ * @param utleieSted
+ * @param returSted
+ * @param kunde
+ *  */
 
 public class Reservasjon {
 
@@ -48,7 +54,7 @@ public class Reservasjon {
    
     /*
     Setter bil som opptatt.
-    @return - boolean
+    @return boolean
      */
 
     public void reserver(Bil bil) {

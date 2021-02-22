@@ -3,6 +3,12 @@ package Objekt;
 import java.util.ArrayList;
 import java.util.List;
 
+/* 
+ * Bilpark
+ * @param bil
+ * @return biler
+ *  */
+
 public class BilParkering {
 
     public static List<Bil> leggTilBiler1() {

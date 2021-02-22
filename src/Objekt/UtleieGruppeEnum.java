@@ -1,5 +1,9 @@
 package Objekt;
 
+/* 
+ * Enum for utleiegruppe.
+ *  */
+
 public enum UtleieGruppeEnum {
 
     LITEN_BIL,
